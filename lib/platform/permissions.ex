@@ -56,6 +56,24 @@ defmodule Platform.Permissions do
   end
 
   @doc """
+  Creates a role but fails with exception
+
+  ## Examples
+
+      iex> create_role(%{field: value})
+      {:ok, %Role{}}
+
+      iex> create_role(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_role!(attrs \\ %{}) do
+    %Role{}
+    |> Role.changeset(attrs)
+    |> Repo.insert!()
+  end
+
+  @doc """
   Updates a role.
 
   ## Examples
